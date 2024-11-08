@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Inclusão da biblioteca XLSX para exportar o arquivo XLSX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    
+    <!-- Inclusão da biblioteca jsPDF para gerar o PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Ponto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="loginForm">
+            <header>
+                <h1>Bem-vindo!</h1>
+                <p>Faça login para acessar o sistema de ponto</p>
+            </header>
+            <div class="form-container">
+                <label for="loginUsername">Usuário:</label>
+                <input type="text" id="loginUsername" placeholder="Digite seu nome de usuário">
+
+                <label for="loginPassword">Senha:</label>
+                <input type="password" id="loginPassword" placeholder="Digite sua senha">
+
+                <button class="btn" id="loginBtn">Entrar</button>
+                <p id="loginError" style="color: red; display: none;">Usuário ou senha inválidos</p>
+            </div>
+        </div>
+
+        <div id="pontoSystem" style="display: none;">
+            <header>
+                <h1>Sistema de Ponto</h1>
+                <p>Bem-vindo ao sistema de ponto, <span id="usuarioLogado"></span>!</p>
+            </header>
+
+            <div class="entrada-saida">
+                <button id="registrarEntrada" class="btn">Registrar Entrada</button>
+                <button id="registrarSaida" class="btn" disabled>Registrar Saída</button>
+            </div>
+
+            <div id="horasTrabalhadas">
+                <p><strong>Horas Trabalhadas Hoje:</strong> <span id="horasDisplay">0</span></p>
+            </div>
+
+            <div id="salarioCalculadora">
+                <h3>Calculadora de Salário</h3>
+                <label for="valorHora">Valor por Hora (R$):</label>
+                <input type="number" id="valorHora" placeholder="Digite o valor por hora" step="0.01">
+                <button class="btn" id="calcularSalario">Calcular Salário</button>
+                <p><strong>Salário Total:</strong> <span id="salarioTotal">R$0,00</span></p>
+            </div>
+
+            <div class="historico">
+                <h3>Histórico de Ponto</h3>
+                <ul id="historicoPontos"></ul>
+            </div>
+
+            <div class="ajustes-manual">
+                <h3>Ajustar Ponto</h3>
+                <label for="ajusteEntrada">Entrada:</label>
+                <input type="datetime-local" id="ajusteEntrada">
+                
+                <label for="ajusteSaida">Saída:</label>
+                <input type="datetime-local" id="ajusteSaida">
+                
+                <button class="btn" id="salvarAjuste">Salvar Ajuste</button>
+            </div>
+
+            <div class="relatorio-periodo">
+                <h3>Gerar Relatório por Período</h3>
+                <label for="dataInicio">Data Início:</label>
+                <input type="date" id="dataInicio">
+                
+                <label for="dataFim">Data Fim:</label>
+                <input type="date" id="dataFim">
+                
+                <button class="btn" id="gerarRelatorioPeriodo">Gerar Relatório</button>
+            </div>
+
+            <!-- Apenas Cristian pode ver esses botões de exportação -->
+            <div class="exportar-relatorios">
+                <button class="btn" id="baixarRelatorioPdf">Baixar Relatório PDF</button>
+                <button class="btn" id="baixarRelatorioXlsx" style="display: none;">Baixar Relatório XLSX</button>
+            </div>
+
+            <!-- Funções exclusivas para Cristian -->
+            <div id="adminControls" style="display: none;">
+                <h3>Administração</h3>
+                <button class="btn" id="verAtivos">Ver Funcionários Ativos</button>
+                <button class="btn" id="aprovarPonto">Aprovar/Reprovar Ponto</button>
+                <button class="btn" id="verFolhaSalarial">Ver Folha Salarial</button>
+            </div>
+
+            <button class="btn" id="logoutBtn">Sair</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

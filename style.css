@@ -1,0 +1,270 @@
+:root {
+    --cor-principal: #4caf50;
+    --cor-secundaria: #28a745;
+    --cor-texto-claro: #6c757d;
+    --cor-texto-escuro: #333;
+    --cor-fundo-claro: #fafafa;
+    --cor-fundo-secundario: #f4f6f9;
+    --cor-botao-hover: #45a049;
+    --cor-botao-desabilitado: #6c757d;
+    --cor-fundo-botao: #4caf50;
+}
+
+/* Resetando as configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definindo o corpo da página */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cor-fundo-secundario);
+    color: var(--cor-texto-escuro);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 20px;
+}
+
+/* Container centralizado */
+.container {
+    width: 100%;
+    max-width: 950px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 40px 30px;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de hover para o container */
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 2.8rem;
+    color: var(--cor-principal);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.15rem;
+    color: var(--cor-texto-claro);
+}
+
+/* Estilo para o formulário */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    padding: 14px 18px;
+    width: 100%;
+    max-width: 380px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    font-size: 1rem;
+    color: var(--cor-texto-escuro);
+    background-color: var(--cor-fundo-claro);
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--cor-principal);
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Botões */
+.btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    width: 100%;
+    max-width: 250px;
+    background-color: var(--cor-fundo-botao);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 12px 0;
+}
+
+.btn:hover {
+    background-color: var(--cor-botao-hover);
+    transform: scale(1.05);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Estilo para o botão de logout */
+#logoutBtn {
+    background-color: #dc3545;
+    font-size: 1rem;
+}
+
+#logoutBtn:hover {
+    background-color: #c82333;
+}
+
+/* Tela do Sistema de Ponto */
+#pontoSystem {
+    display: none;
+}
+
+h2 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.entrada-saida {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.entrada-saida button {
+    padding: 18px 30px;
+    font-size: 1.1rem;
+    width: 200px;
+    border-radius: 8px;
+    background-color: var(--cor-secundaria);
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.entrada-saida button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.entrada-saida button:disabled {
+    background-color: var(--cor-botao-desabilitado);
+    cursor: not-allowed;
+}
+
+#horasTrabalhadas {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #444;
+    margin-top: 20px;
+}
+
+.historico {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.historico ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.historico li {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.historico li:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+}
+
+.historico strong {
+    font-weight: 600;
+    color: var(--cor-texto-escuro);
+}
+
+.historico span {
+    font-size: 1rem;
+    color: #888;
+}
+
+/* Adicionando animação de fade-in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tela de carregamento com animação de fade-in */
+#pontoSystem,
+#loginForm {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .entrada-saida button {
+        width: 100%;
+    }
+
+    input {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .entrada-saida button {
+        padding: 14px;
+        font-size: 1rem;
+    }
+
+    #horasTrabalhadas {
+        font-size: 1.2rem;
+    }
+}
